@@ -21,16 +21,16 @@ class Task
 
 
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $createdTime;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $updatedTime;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $startTime;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $endTime;
 
     #[ORM\ManyToOne(targetEntity: TaskList::class, inversedBy: 'Tasks')]

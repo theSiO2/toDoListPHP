@@ -18,6 +18,17 @@ class UserRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, User::class);
     }
+    public function findUserObjByUserID(int $userId): object
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT p
+            FROM App\Entity\User p
+            WHERE p.id = :userId'
+        )->setParameter('userId', $userId);
+        // returns an array of Product objects
+        return $query->getResult()[0];
+    }
 
     // /**
     //  * @return User[] Returns an array of User objects

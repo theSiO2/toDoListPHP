@@ -28,10 +28,10 @@ class User
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $avatarAddress;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $createdTime;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $updatedTime;
 
     #[ORM\OneToMany(mappedBy: 'userId', targetEntity: TaskList::class, orphanRemoval: true)]
@@ -46,7 +46,10 @@ class User
     {
         return $this->id;
     }
-
+    public function  setId(int $id): void
+    {
+        $this->id=$id;
+    }
     public function getName(): ?string
     {
         return $this->name;

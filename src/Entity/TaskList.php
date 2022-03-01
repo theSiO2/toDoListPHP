@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\ListsRepository;
+use App\Repository\TaskListRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ListsRepository::class)]
+#[ORM\Entity(repositoryClass: TaskListRepository::class)]
 class TaskList
 {
     #[ORM\Id]
@@ -18,10 +18,10 @@ class TaskList
     #[ORM\Column(type: 'string', length: 64)]
     private $name;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $createdTime;
 
-    #[ORM\Column(type: 'time')]
+    #[ORM\Column(type: 'datetime')]
     private $updatedTime;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'TaskList')]
@@ -41,6 +41,12 @@ class TaskList
         return $this->id;
     }
 
+    public  function setId(int $id) :self
+    {
+        $this->id=$id;
+
+        return $this;
+    }
     public function getName(): ?string
     {
         return $this->name;
